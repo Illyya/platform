@@ -23,6 +23,8 @@
       :name="nameInput"
       :id="idInput"
       :placeholder="placeholderInput"
+      v-model="inputData[nameInput]"
+      @input="sendInputData"
       maskChar="#"
       mask="+7\ (999) 999-99-99"
       class="label-and-input-for-form__input"
@@ -34,6 +36,8 @@
       :id="idInput"
       :type="typeInputInComputed"
       :placeholder="placeholderInput"
+      v-model.trim="inputData[nameInput]"
+      @change="sendInputData"
       class="label-and-input-for-form__input"
     />
 
@@ -74,9 +78,26 @@ export default {
     return {
       typeInputInData: this.typeInput,
       isTypeInputText: false,
+      inputData: {}
     };
   },
   methods: {
+    sendInputData() {
+      if (this.inputData.fullName) {
+        const newFullName = this.inputData.fullName
+          .replace(/\s+/g, " ")
+          .split(' ')
+          .map((el) => el ? el[0].toUpperCase() + el.slice(1) : null);
+
+        newFullName[0] ? this.inputData.firstName = newFullName[0] : null;
+        newFullName[1] ? this.inputData.secondName = newFullName[1] : null;
+        newFullName[2] ? this.inputData.thirdName = newFullName[2] : null;       
+
+        delete this.inputData.fullName
+      }
+
+      this.$emit('sendInputData', this.inputData);
+    },
     showOrHidePassword() {
       if (this.typeInputInData == "text") {
         this.typeInputInData = "password";
@@ -172,13 +193,16 @@ export default {
     border: 1px solid #e0e0e0;
     transition: 0.2s ease-out;
 
-    &::placeholder {
-      
+    &::placeholder {      
       color: #828282;
     }
 
     &:focus {
       border-color: #000000;
+    }
+
+    &:invalid {
+      border-color: rgb(207, 33, 33);
     }
   }
 

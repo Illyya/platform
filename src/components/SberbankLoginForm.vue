@@ -13,6 +13,7 @@
       :placeholderInput="input.placeholderInput"
       :nameLabel="input.nameLabel"
       :hintText="input.hintText"
+      @sendInputData="sendInputData"
       class="sberbank-login-form__label-and-input-for-form"
     />
 
@@ -29,6 +30,7 @@
 </template>
 
 <script>
+import { inputList} from '../const/inputList.js';
 import { sendingData } from "../api/api.js";
 import LabelAndInputForForm from "./LabelAndInputForForm.vue";
 import RememberMeInput from "./RememberMeInput.vue";
@@ -38,32 +40,19 @@ export default {
   components: { LabelAndInputForForm, RememberMeInput },
   data() {
     return {
-      inputList: [
-        {
-          nameInput: "sberId",
-          idInput: "sberId",
-          typeInput: "text",
-          placeholderInput: "",
-          nameLabel: "Сбербанк ID",
-          hintText: "Подсказка",
-        },
-        {
-          nameInput: "password",
-          idInput: "password",
-          typeInput: "password",
-          placeholderInput: "_",
-          nameLabel: "Пароль",
-          hintText: "Подсказка",
-        },
-      ],
+      inputList: [inputList[4], inputList[1]],
       showPasswordHint: true,
       showRememberMeLabel: false,
+      inputData: {},
     };
   },
   methods: {
     sendingData() {
-      sendingData();
+      sendingData(this.inputData);
     },
+    sendInputData(inputData) {
+      Object.assign(this.inputData, inputData)
+    }
   },
 };
 </script>

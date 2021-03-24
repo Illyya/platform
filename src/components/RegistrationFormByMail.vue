@@ -13,6 +13,7 @@
       :placeholderInput="input.placeholderInput"
       :nameLabel="input.nameLabel"
       :hintText="input.hintText"
+      @sendInputData="sendInputData"
       class="registration-form-by-mail__label-and-input-for-form"
     />    
 
@@ -26,6 +27,7 @@
 </template>
 
 <script>
+import { inputList} from '../const/inputList.js';
 import { sendingData } from "../api/api.js";
 import LabelAndInputForForm from "./LabelAndInputForForm.vue";
 
@@ -34,45 +36,16 @@ export default {
   components: { LabelAndInputForForm },
   data() {
     return {
-      inputList: [
-        {
-          nameInput: "fullName",
-          idInput: "fullName",
-          typeInput: "text",
-          placeholderInput: "Константинопольский Константин Конст...",
-          nameLabel: "ФИО",
-          hintText: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        },
-        {
-          nameInput: "tel",
-          idInput: "tel",
-          typeInput: "tel",
-          placeholderInput: "+7 (900) 000-00-00",
-          nameLabel: "Телефон",
-          hintText: "Подсказка",
-        },
-        {
-          nameInput: "email",
-          idInput: "email",
-          typeInput: "email",
-          placeholderInput: "exsample@mail.com",
-          nameLabel: "E-mail",
-          hintText: "Подсказка",
-        },
-        {
-          nameInput: "password",
-          idInput: "password",
-          typeInput: "password",
-          placeholderInput: "_",
-          nameLabel: "Пароль",
-          hintText: "Подсказка",
-        },
-      ],
+      inputList: [inputList[3], inputList[2], inputList[0], inputList[1]],
+      inputData: {},
     };
   },
   methods: {
     sendingData() {
-      sendingData();
+      sendingData(this.inputData);
+    },
+    sendInputData(inputData) {
+      Object.assign(this.inputData, inputData)
     },
   },
 };

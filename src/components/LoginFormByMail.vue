@@ -13,6 +13,7 @@
       :placeholderInput="input.placeholderInput"
       :nameLabel="input.nameLabel"
       :hintText="input.hintText"
+      @sendInputData="sendInputData"
       class="login-form-by-mail__label-and-input-for-form"
     />
 
@@ -30,6 +31,7 @@
 </template>
 
 <script>
+import { inputList} from '../const/inputList.js';
 import { sendingData } from '../api/api.js';
 import LabelAndInputForForm from "./LabelAndInputForForm.vue";
 import RememberMeInput from "./RememberMeInput.vue";
@@ -39,26 +41,10 @@ export default {
   components: { LabelAndInputForForm, RememberMeInput },
   data() {
     return {
-      inputList: [
-        {
-          nameInput: "email",
-          idInput: "email",
-          typeInput: "email",
-          placeholderInput: "exsample@mail.com",
-          nameLabel: "E-mail",
-          hintText: "Lorem ipsum dolor sit amet consectetur adipisicing elit.",
-        },
-        {
-          nameInput: "password",
-          idInput: "password",
-          typeInput: "password",
-          placeholderInput: "_",
-          nameLabel: "Пароль",
-          hintText: "Подсказка",
-        },
-      ],
+      inputList: [inputList[0], inputList[1]],
       showPasswordHint: true,
       showRememberMeLabel: true,
+      inputData: {},
     };
   },
   methods: {
@@ -66,8 +52,11 @@ export default {
       this.$emit("showCheckByCode");
     },
     sendingData() {
-      sendingData()
-    }
+      sendingData(this.inputData)
+    },
+    sendInputData(inputData) {
+      Object.assign(this.inputData, inputData)
+    },
   },
 };
 </script>

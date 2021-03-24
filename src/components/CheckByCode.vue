@@ -5,15 +5,15 @@
     <FormCheckByCode class="check-by-code__form-check-by-code" />
 
     <div class="check-by-code__row-text-bottom">
-      <p class="check-by-code__row-text-left">
+      <button class="check-by-code__row-text-left">
         Через 59 сек<br />
-        <span>Отправить ещё</span>
-      </p>
+        Отправить ещё
+      </button>
 
-      <p class="check-by-code__row-text-right">
+      <button class="check-by-code__row-text-right">
         Изменить номер<br />
         Не приходит СМС?
-      </p>
+      </button>
     </div>
   </div>
 </template>
@@ -49,20 +49,22 @@ export default {
     line-height: 19px;
   }
 
-  &__row-text-left {
-    color: #828282;
-    cursor: pointer;
-
-    span {
-      text-decoration: underline;
-      text-decoration-color: #e0e0e0;
-    }
-  }
-
+  &__row-text-left,
   &__row-text-right {
+    text-align: left;
+    line-height: inherit;
+    color: #828282;
+    background-color: transparent;
     text-decoration: underline;
     text-decoration-color: #e0e0e0;
     cursor: pointer;
+  }
+
+  &__row-text-left {}
+
+  &__row-text-right {
+    text-align: right;
+    color: #000000;
   }
 }
 </style>

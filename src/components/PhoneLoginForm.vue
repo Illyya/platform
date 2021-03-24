@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import { inputList} from '../const/inputList.js';
 import LabelAndInputForForm from "./LabelAndInputForForm.vue";
 import RememberMeInput from "./RememberMeInput.vue";
 
@@ -40,16 +41,7 @@ export default {
   components: { LabelAndInputForForm, RememberMeInput },
   data() {
     return {
-      inputList: [
-        {
-          nameInput: "tel",
-          idInput: "tel",
-          typeInput: "tel",
-          placeholderInput: "+7 (900) 000-00-00",
-          nameLabel: "Телефон",
-          hintText: "Подзказка",
-        },
-      ],
+      inputList: [inputList[2]],
       showPasswordHint: false,
       showRememberMeLabel: true,
     };
