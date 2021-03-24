@@ -45,7 +45,9 @@ export default {
       sendingData(this.inputData);
     },
     sendInputData(inputData) {
-      Object.assign(this.inputData, inputData)
+      Object.assign(this.inputData, inputData);
+
+      delete this.inputData.fullName
     },
   },
 };

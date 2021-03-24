@@ -91,9 +91,7 @@ export default {
 
         newFullName[0] ? this.inputData.firstName = newFullName[0] : null;
         newFullName[1] ? this.inputData.secondName = newFullName[1] : null;
-        newFullName[2] ? this.inputData.thirdName = newFullName[2] : null;       
-
-        delete this.inputData.fullName
+        newFullName[2] ? this.inputData.thirdName = newFullName[2] : null;           
       }
 
       this.$emit('sendInputData', this.inputData);
