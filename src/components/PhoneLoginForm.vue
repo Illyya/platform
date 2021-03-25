@@ -41,7 +41,7 @@ export default {
   components: { LabelAndInputForForm, RememberMeInput },
   data() {
     return {
-      inputList: [inputList[2]],
+      // inputList: [inputList[2]],
       showPasswordHint: false,
       showRememberMeLabel: true,
     };
@@ -50,6 +50,9 @@ export default {
     showCheckByCode() {
       this.$emit('showCheckByCode')
     }
+  },
+  created() {
+    this.inputList = [inputList[2]];
   }
 };
 </script>

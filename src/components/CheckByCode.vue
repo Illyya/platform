@@ -5,14 +5,14 @@
     <FormCheckByCode class="check-by-code__form-check-by-code" />
 
     <div class="check-by-code__row-text-bottom">
-      <button class="check-by-code__row-text-left">
-        Через 59 сек<br />
-        Отправить ещё
-      </button>
+      <div class="check-by-code__row-text-left">
+        <p>Через 59 сек</p>
+        <button>Отправить ещё</button>
+      </div>
 
       <button class="check-by-code__row-text-right">
-        Изменить номер<br />
-        Не приходит СМС?
+        <button>Изменить номер</button>
+        <button>Не приходит СМС?</button>
       </button>
     </div>
   </div>
@@ -47,24 +47,36 @@ export default {
     justify-content: space-between;
     font-size: 0.75rem;
     line-height: 19px;
-  }
 
+    button {
+      text-decoration: underline;
+      text-decoration-color: #e0e0e0;
+      text-underline-offset: 3px;      
+      background-color: transparent;
+      transition: .2s ease-out;
+
+      &:hover {
+        text-decoration-color: #000000;
+      }
+    }
+  }
   &__row-text-left,
-  &__row-text-right {
-    text-align: left;
-    line-height: inherit;
-    color: #828282;
-    background-color: transparent;
-    text-decoration: underline;
-    text-decoration-color: #e0e0e0;
-    cursor: pointer;
+  &__row-text-right {    
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
   }
 
-  &__row-text-left {}
+  &__row-text-left {    
+    color: #828282;
 
-  &__row-text-right {
-    text-align: right;
-    color: #000000;
+    button {
+      color: inherit;
+    }
+  }
+
+  &__row-text-right {        
+    align-items: flex-end;
   }
 }
 </style>

@@ -36,7 +36,7 @@ export default {
   components: { LabelAndInputForForm },
   data() {
     return {
-      inputList: [inputList[3], inputList[2], inputList[0], inputList[1]],
+      // inputList: [inputList[3], inputList[2], inputList[0], inputList[1]],
       inputData: {},
     };
   },
@@ -50,6 +50,9 @@ export default {
       delete this.inputData.fullName
     },
   },
+  created() {
+    this.inputList = [inputList[3], inputList[2], inputList[0], inputList[1]];
+  }
 };
 </script>
 

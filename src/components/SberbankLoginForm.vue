@@ -40,7 +40,7 @@ export default {
   components: { LabelAndInputForForm, RememberMeInput },
   data() {
     return {
-      inputList: [inputList[4], inputList[1]],
+      // inputList: [inputList[4], inputList[1]],
       showPasswordHint: true,
       showRememberMeLabel: false,
       inputData: {},
@@ -54,6 +54,9 @@ export default {
       Object.assign(this.inputData, inputData)
     }
   },
+  created() {
+    this.inputList = [inputList[4], inputList[1]];
+  }
 };
 </script>
 
