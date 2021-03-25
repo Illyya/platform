@@ -38,6 +38,7 @@
       :placeholder="placeholderInput"
       v-model.trim="inputData[nameInput]"
       @change="sendInputData"
+      :pattern="nameInput == 'sberId' ? '[\+]?[0-9 ]+' : null"
       class="label-and-input-for-form__input"
     />
 
