@@ -37,6 +37,6 @@ export const inputList = [
     typeInput: "text",
     placeholderInput: "",
     nameLabel: "Сбербанк ID",
-    hintText: "Подсказка",
+    hintText: "Введите номер телефона",
   },
 ]

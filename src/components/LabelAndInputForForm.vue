@@ -179,7 +179,7 @@ export default {
   &__triangle {
     position: absolute;
     width: 10px;
-    left: -10%;
+    left: -9px;
     transform: rotate(90deg);
     filter: drop-shadow(0px 4px 7px rgba(247, 15, 15, 0.14));
   }
